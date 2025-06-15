@@ -528,10 +528,10 @@ function applyTheme(themeName) {
 
   switch(themeName) {
     case 'cosmic':
-      root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #e879f9 0%, #d946ef 50%, #c026d3 100%)');
-      root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #f0abfc 0%, #e879f9 100%)');
-      root.style.setProperty('--bg-primary', '#1e0d2e');
-      root.style.setProperty('--bg-secondary', '#2a1142');
+      root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #b83d89 0%, #a33677 50%, #8e2b65 100%)');
+      root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #c9449a 0%, #b83d89 100%)');
+      root.style.setProperty('--bg-primary', '#240d1f');
+      root.style.setProperty('--bg-secondary', '#331426');
       break;
     case 'forest':
       root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #134e5e 0%, #71b280 100%)');
