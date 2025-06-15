@@ -98,6 +98,13 @@ const RITUAL_APPS = [
   { name: "Be Ceremonial", genres: ["Rituals"], description: "Daily ceremony practice" }
 ];
 
+const MOON_RELATED_APPS = [
+  { name: "Moonly", genres: ["Fem Wisdom", "Vedic & Ayurveda"], description: "Lunar wisdom cycles" },
+  { name: "Moon Calendar Rituals", genres: ["Rituals"], description: "Lunar ceremonies" },
+  { name: "The Moon School", genres: ["Occult"], description: "Lunar wisdom education" },
+  { name: "Meaningful Moon", genres: ["Occult"], description: "Moon cycle meanings" }
+];
+
 /* ---- State management ----------------------- */
 let currentSection = 'planner';
 let userHistory = JSON.parse(localStorage.getItem('mysticMoodHistory') || '[]');
@@ -495,8 +502,21 @@ function handleMoonPhaseClick() {
   const moonPhase = getCurrentMoonPhase();
   if (moonPhase.name === "New Moon") {
     showNotification('🌑 New Moon: Perfect time for new beginnings!');
-    // Auto-select dreamy mood for New Moon
-    setTimeout(() => handleMoodSelection('dreamy'), 500);
+    
+    // Select one random moon-related app
+    const randomMoonApp = MOON_RELATED_APPS[Math.floor(Math.random() * MOON_RELATED_APPS.length)];
+    currentApps = [randomMoonApp];
+    
+    renderApps([randomMoonApp], "🌑 New Moon Guidance");
+    
+    // Add to history with New Moon as the mood
+    const newMoonMood = {
+      id: 'new-moon',
+      label: 'New Moon',
+      icon: '🌑'
+    };
+    
+    addToHistory(newMoonMood, [randomMoonApp]);
   } else {
     showNotification(`${moonPhase.icon} ${moonPhase.name}: ${moonPhase.energy}`);
   }

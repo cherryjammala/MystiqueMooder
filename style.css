@@ -1168,3 +1168,221 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-gradient);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const themeSelector = document.getElementById('theme-selector');
+    const root = document.documentElement;
+
+    themeSelector.addEventListener('change', function() {
+      const selectedTheme = this.value;
+
+      switch (selectedTheme) {
+        case 'default':
+          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
+          root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)');
+          root.style.setProperty('--bg-primary', '#0f0715');
+          root.style.setProperty('--bg-secondary', '#1a0f2e');
+          break;
+        case 'dark':
+          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #2c3e50 0%, #3498db 100%)');
+          root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #34495e 0%, #2c3e50 100%)');
+          root.style.setProperty('--bg-primary', '#212121');
+          root.style.setProperty('--bg-secondary', '#333333');
+          break;
+        case 'mystical':
+          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)');
+          root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #6a85b6 0%, #bac8e0 100%)');
+          root.style.setProperty('--bg-primary', '#0a192f');
+          root.style.setProperty('--bg-secondary', '#172a45');
+          break;
+        case 'purple':
+            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
+            root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #6a1b9a 0%, #e91e63 100%)');
+            root.style.setProperty('--bg-primary', '#1a0027');
+            root.style.setProperty('--bg-secondary', '#28003e');
+            break;
+        case 'cosmic':
+      root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #d946ef 0%, #c026d3 50%, #a855f7 100%)');
+      root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #e879f9 0%, #d946ef 100%)');
+      root.style.setProperty('--bg-primary', '#1e0d2e');
+      root.style.setProperty('--bg-secondary', '#2a1142');
+      break;
+      }
+    });
+  });
+
+//The change modifies the 'cosmic' theme's color scheme.
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const specialtyBtns = document.querySelectorAll('.specialty-btn');
+    const appResults = document.querySelector('.app-results');
+    const appList = [
+        { name: 'Calm', genres: 'Meditation, Sleep', url: 'https://www.calm.com/' },
+        { name: 'Headspace', genres: 'Meditation, Focus', url: 'https://www.headspace.com/' },
+        { name: 'Insight Timer', genres: 'Meditation, Community', url: 'https://insighttimer.com/' },
+        { name: 'Noisly', genres: 'Soundscapes, Focus', url: 'https://www.noisly.com/' },
+        { name: 'Rainy Mood', genres: 'Soundscapes, Relaxation', url: 'https://www.rainymood.com/' },
+        { name: 'Lo-fi Radio', genres: 'Music, Focus', url: 'https://www.youtube.com/watch?v=5qap5aO4i9A' },
+        { name: 'Trello', genres: 'Productivity, Organization', url: 'https://trello.com/' },
+        { name: 'Asana', genres: 'Productivity, Teamwork', url: 'https://asana.com/' },
+        { name: 'Freedom', genres: 'Productivity, Focus', url: 'https://freedom.to/' },
+        { name: 'Forest', genres: 'Productivity, Focus', url: 'https://www.forestapp.cc/' },
+        { name: 'Notion', genres: 'Organization, Productivity', url: 'https://www.notion.so/' },
+        { name: 'Evernote', genres: 'Notes, Organization', url: 'https://evernote.com/' },
+        { name: 'Day One', genres: 'Journaling, Memories', url: 'https://dayoneapp.com/' },
+        { name: 'Penzu', genres: 'Journaling, Privacy', url: 'https://penzu.com/' },
+        { name: 'Stoic.', genres: 'Philosophy, Guidance', url: 'https://stoicapp.com/' },
+        { name: 'Fabulous', genres: 'Habits, Routines', url: 'https://www.thefabulous.co/' },
+        { name: 'Aloe Bud', genres: 'Self-Care, Tracking', url: 'https://www.aloebud.com/' },
+        { name: 'Bearable', genres: 'Mood, Tracking', url: 'https://bearable.app/' },
+        { name: 'Breeze', genres: 'Exercises, Meditation', url: 'https://breeze.im/' },
+        { name: 'Shine', genres: 'Affirmations, Positivity', url: 'https://www.shinetext.com/' },
+        { name: 'Talkspace', genres: 'Therapy, Support', url: 'https://www.talkspace.com/' },
+        { name: 'BetterHelp', genres: 'Therapy, Counseling', url: 'https://www.betterhelp.com/' },
+        { name: 'Moodpath', genres: 'Assessment, Tracking', url: 'https://moodpath.com/' },
+        { name: 'Colorfy', genres: 'Art, Relaxation', url: 'https://www.colorfy.net/' },
+        { name: 'Pigment', genres: 'Art, Stress Relief', url: 'https://www.pigmentapp.com/' },
+        { name: 'Happy Color', genres: 'Art, Casual', url: 'https://happycolor.me/' }
+    ];
+
+    specialtyBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            const filteredApps = appList.filter(app => app.genres.includes(category));
+
+            let appCardsHTML = '';
+
+            if (category === 'Mandatory') {
+                const mandatoryApps = appList.slice(0, 3);
+                appCardsHTML = mandatoryApps.map(app => `
+                    <div class="app-card mandatory">
+                        <h4>${app.name}</h4>
+                        <div class="app-genres">${app.genres}</div>
+                    </div>
+                `).join('');
+            } else {
+                appCardsHTML = filteredApps.map(app => `
+                    <div class="app-card">
+                        <h4>${app.name}</h4>
+                        <div class="app-genres">${app.genres}</div>
+                    </div>
+                `).join('');
+            }
+
+            appResults.innerHTML = `<h3>Apps for ${category}</h3>${appCardsHTML}`;
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const moodSelector = document.querySelector('.mood-selector');
+    const appResults = document.querySelector('.app-results');
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const modalMoodGrid = document.querySelector('.modal-mood-grid');
+    const modalClose = document.querySelector('.modal-close');
+    let appList = [
+        { name: 'Calm', genres: 'Meditation, Sleep', mood: 'Relaxed', url: 'https://www.calm.com/' },
+        { name: 'Headspace', genres: 'Meditation, Focus', mood: 'Focused', url: 'https://www.headspace.com/' },
+        { name: 'Insight Timer', genres: 'Meditation, Community', mood: 'Relaxed', url: 'https://insighttimer.com/' },
+        { name: 'Noisly', genres: 'Soundscapes, Focus', mood: 'Focused', url: 'https://www.noisly.com/' },
+        { name: 'Rainy Mood', genres: 'Soundscapes, Relaxation', mood: 'Relaxed', url: 'https://www.rainymood.com/' },
+        { name: 'Lo-fi Radio', genres: 'Music, Focus', mood: 'Focused', url: 'https://www.youtube.com/watch?v=5qap5aO4i9A' },
+        { name: 'Trello', genres: 'Productivity, Organization', mood: 'Productive', url: 'https://trello.com/' },
+        { name: 'Asana', genres: 'Productivity, Teamwork', mood: 'Productive', url: 'https://asana.com/' },
+        { name: 'Freedom', genres: 'Productivity, Focus', mood: 'Focused', url: 'https://freedom.to/' },
+        { name: 'Forest', genres: 'Productivity, Focus', mood: 'Focused', url: 'https://www.forestapp.cc/' },
+        { name: 'Notion', genres: 'Organization, Productivity', mood: 'Productive', url: 'https://www.notion.so/' },
+        { name: 'Evernote', genres: 'Notes, Organization', mood: 'Organized', url: 'https://evernote.com/' },
+        { name: 'Day One', genres: 'Journaling, Memories', mood: 'Reflective', url: 'https://dayoneapp.com/' },
+        { name: 'Penzu', genres: 'Journaling, Privacy', mood: 'Private', url: 'https://penzu.com/' },
+        { name: 'Stoic.', genres: 'Philosophy, Guidance', mood: 'Reflective', url: 'https://stoicapp.com/' },
+        { name: 'Fabulous', genres: 'Habits, Routines', mood: 'Motivated', url: 'https://www.thefabulous.co/' },
+        { name: 'Aloe Bud', genres: 'Self-Care, Tracking', mood: 'Self-Care', url: 'https://www.aloebud.com/' },
+        { name: 'Bearable', genres: 'Mood, Tracking', mood: 'Aware', url: 'https://bearable.app/' },
+        { name: 'Breeze', genres: 'Exercises, Meditation', mood: 'Relaxed', url: 'https://breeze.im/' },
+        { name: 'Shine', genres: 'Affirmations, Positivity', mood: 'Positive', url: 'https://www.shinetext.com/' },
+        { name: 'Talkspace', genres: 'Therapy, Support', mood: 'Supported', url: 'https://www.talkspace.com/' },
+        { name: 'BetterHelp', genres: 'Therapy, Counseling', mood: 'Supported', url: 'https://www.betterhelp.com/' },
+        { name: 'Moodpath', genres: 'Assessment, Tracking', mood: 'Aware', url: 'https://moodpath.com/' },
+        { name: 'Colorfy', genres: 'Art, Relaxation', mood: 'Relaxed', url: 'https://www.colorfy.net/' },
+        { name: 'Pigment', genres: 'Art, Stress Relief', mood: 'Relaxed', url: 'https://www.pigmentapp.com/' },
+        { name: 'Happy Color', genres: 'Art, Casual', mood: 'Relaxed', url: 'https://happycolor.me/' },
+        { name: 'Stellarium', genres: 'Astronomy, Education', mood: 'Curious', url: 'https://stellarium.org/' },
+        { name: 'Star Walk', genres: 'Astronomy, Exploration', mood: 'Curious', url: 'https://starwalk.space/' },
+        { name: 'SkyView', genres: 'Astronomy, AR', mood: 'Curious', url: 'https://www.terminaleleven.com/skyview/' },
+    ];
+
+    let selectedMoods = [];
+
+    moodSelector.addEventListener('click', function(event) {
+        const moodCard = event.target.closest('.mood-card');
+        if (moodCard) {
+            const mood = moodCard.getAttribute('data-mood');
+            if (selectedMoods.includes(mood)) {
+                selectedMoods = selectedMoods.filter(m => m !== mood);
+                moodCard.classList.remove('blend-mode');
+            } else {
+                selectedMoods.push(mood);
+                moodCard.classList.add('blend-mode');
+            }
+        }
+    });
+
+    const blendCreateBtn = document.querySelector('.blend-create-btn');
+    blendCreateBtn.addEventListener('click', function() {
+        if (selectedMoods.length === 0) {
+            alert('Please select at least one mood.');
+            return;
+        }
+        const filteredApps = appList.filter(app => selectedMoods.includes(app.mood));
+        let appCardsHTML = filteredApps.map(app => `
+            <div class="app-card">
+                <h4>${app.name}</h4>
+                <div class="app-genres">${app.genres}</div>
+            </div>
+        `).join('');
+        appResults.innerHTML = `<h3>Apps for ${selectedMoods.join(', ')}</h3>${appCardsHTML}`;
+    });
+
+    const blendClearBtn = document.querySelector('.blend-clear-btn');
+    blendClearBtn.addEventListener('click', function() {
+        selectedMoods = [];
+        const moodCards = document.querySelectorAll('.mood-card');
+        moodCards.forEach(card => card.classList.remove('blend-mode'));
+        appResults.innerHTML = '';
+    });
+
+    // Modal functionality
+    modalClose.addEventListener('click', function() {
+        modalOverlay.classList.remove('active');
+    });
+
+    // New Moon Functionality
+    const newMoonBtn = document.querySelector('.nav-btn[data-target="new-moon"]');
+
+    newMoonBtn.addEventListener('click', function(event) {
+        event.preventDefault();
+        // Filter for Moon-related apps
+        const moonApps = appList.filter(app => ['Astronomy', 'Exploration', 'AR', 'Education'].some(keyword => app.genres.includes(keyword)));
+
+        // Ensure there are Moon apps available
+        if (moonApps.length === 0) {
+            appResults.innerHTML = `<p>No Moon-related apps found.</p>`;
+            return;
+        }
+          // Generate a random index based on the number of Moon apps
+        const randomIndex = Math.floor(Math.random() * moonApps.length);
+
+        // Select a random Moon app
+        const randomMoonApp = moonApps[randomIndex];
+
+          // Display only one random Moon app
+        appResults.innerHTML = `
+            <div class="app-card">
+                <h4>${randomMoonApp.name}</h4>
+                <div class="app-genres">${randomMoonApp.genres}</div>
+            </div>`;
+    });
+
+    // Favorites, History, Goals, and Notes functionalities (omitted for brevity)
+});
