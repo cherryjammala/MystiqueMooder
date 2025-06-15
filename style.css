@@ -10,7 +10,7 @@
     --mystical-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
     --purple-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --cosmic-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    --cosmic-gradient: linear-gradient(135deg, #c026d3 0%, #a21caf 50%, #86198f 100%);
 
     --bg-primary: #0f0715;
     --bg-secondary: #1a0f2e;
@@ -1202,8 +1202,8 @@ document.addEventListener('DOMContentLoaded', function() {
             root.style.setProperty('--bg-secondary', '#28003e');
             break;
         case 'cosmic':
-      root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #d946ef 0%, #c026d3 50%, #a855f7 100%)');
-      root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #e879f9 0%, #d946ef 100%)');
+      root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #c026d3 0%, #a21caf 50%, #86198f 100%)');
+      root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #d946ef 0%, #c026d3 100%)');
       root.style.setProperty('--bg-primary', '#1e0d2e');
       root.style.setProperty('--bg-secondary', '#2a1142');
       break;
