@@ -10,7 +10,7 @@
     --mystical-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
     --purple-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --cosmic-gradient: linear-gradient(135deg, #e879f9 0%, #d946ef 50%, #c026d3 100%);
+    --cosmic-gradient: linear-gradient(135deg, #c9449a 0%, #b83d89 50%, #a33677 100%);
 
     --bg-primary: #0f0715;
     --bg-secondary: #1a0f2e;
@@ -1050,7 +1050,7 @@ body {
     }
 }
 
-@keyframes slideInUp {
+@keyframes slideInUp{
     from { 
         opacity: 0; 
         transform: translateY(20px); 
@@ -1274,71 +1274,47 @@ document.addEventListener('DOMContentLoaded', function() {
         const moodCard = event.target.closest('.mood-card');
         if (moodCard) {
             const mood = moodCard.getAttribute('data-mood');
-            if (selectedMoods.includes(mood)) {
-                selectedMoods = selectedMoods.filter(m => m !== mood);
-                moodCard.classList.remove('blend-mode');
-            } else {
-                selectedMoods.push(mood);
-                moodCard.classList.add('blend-mode');
-            }
         }
     });
-
-    const blendCreateBtn = document.querySelector('.blend-create-btn');
-    blendCreateBtn.addEventListener('click', function() {
-        if (selectedMoods.length === 0) {
-            alert('Please select at least one mood.');
-            return;
-        }
-        const filteredApps = appList.filter(app => selectedMoods.includes(app.mood));
-        let appCardsHTML = filteredApps.map(app => `
-            <div class="app-card">
-                <h4>${app.name}</h4>
-                <div class="app-genres">${app.genres}</div>
-            </div>
-        `).join('');
-        appResults.innerHTML = `<h3>Apps for ${selectedMoods.join(', ')}</h3>${appCardsHTML}`;
-    });
-
-    const blendClearBtn = document.querySelector('.blend-clear-btn');
-    blendClearBtn.addEventListener('click', function() {
-        selectedMoods = [];
-        const moodCards = document.querySelectorAll('.mood-card');
-        moodCards.forEach(card => card.classList.remove('blend-mode'));
-        appResults.innerHTML = '';
-    });
-
-    // Modal functionality
-    modalClose.addEventListener('click', function() {
-        modalOverlay.classList.remove('active');
-    });
-
-    // New Moon Functionality
-    const newMoonBtn = document.querySelector('.nav-btn[data-target="new-moon"]');
-
-    newMoonBtn.addEventListener('click', function(event) {
-        event.preventDefault();
-        // Filter for Moon-related apps
-        const moonApps = appList.filter(app => ['Astronomy', 'Exploration', 'AR', 'Education'].some(keyword => app.genres.includes(keyword)));
-
-        // Ensure there are Moon apps available
-        if (moonApps.length === 0) {
-            appResults.innerHTML = `<p>No Moon-related apps found.</p>`;
-            return;
-        }
-          // Generate a random index based on the number of Moon apps
-        const randomIndex = Math.floor(Math.random() * moonApps.length);
-
-        // Select a random Moon app
-        const randomMoonApp = moonApps[randomIndex];
-
-          // Display only one random Moon app
-        appResults.innerHTML = `
-            <div class="app-card">
-                <h4>${randomMoonApp.name}</h4>
-                <div class="app-genres">${randomMoonApp.genres}</div>
-            </div>`;
-    });
-
-    // Favorites, History, Goals, and Notes functionalities (omitted for brevity)
 });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const themeSelector = document.getElementById('theme-selector');
+    const root = document.documentElement;
+
+    themeSelector.addEventListener('change', function() {
+        const theme = this.value;
+
+        switch (theme) {
+            case 'default':
+                root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
+                root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)');
+                root.style.setProperty('--bg-primary', '#0f0715');
+                root.style.setProperty('--bg-secondary', '#1a0f2e');
+                break;
+            case 'dark':
+                root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #2c3e50 0%, #3498db 100%)');
+                root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #34495e 0%, #2c3e50 100%)');
+                root.style.setProperty('--bg-primary', '#222');
+                root.style.setProperty('--bg-secondary', '#333');
+                break;
+            case 'purple':
+                root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
+                root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%)');
+                root.style.setProperty('--bg-primary', '#1a0d2e');
+                root.style.setProperty('--bg-secondary', '#2a1142');
+                break;
+            case 'cosmic':
+                root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #c9449a 0%, #b83d89 50%, #a33677 100%)');
+                root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #e85bb8 0%, #d94ca7 50%, #c9449a 100%)');
+                root.style.setProperty('--bg-primary', '#2a0d22');
+                root.style.setProperty('--bg-secondary', '#3d1530');
+                break;
+        }
+    });
+});
+</script>
+</body>
+</html>
