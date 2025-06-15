@@ -1,0 +1,19 @@
+{
+  "name": "Mystic Mood Planner",
+  "short_name": "MysticMood",
+  "description": "A mystical app for mood-based planning and lunar tracking",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a0e3d",
+  "theme_color": "#c5a3ff",
+  "orientation": "portrait",
+  "categories": ["lifestyle", "wellness", "productivity"],
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

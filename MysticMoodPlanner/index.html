@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystic Mood Planner</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon.png" type="image/png">
+    <meta name="theme-color" content="#c5a3ff">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Floating mystical elements -->
+        <div class="mystical-bg">
+            <div class="floating-element floating-1"></div>
+            <div class="floating-element floating-2"></div>
+            <div class="floating-element floating-3"></div>
+            <div class="floating-element floating-4"></div>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">✨ Mystic Mood Planner ✨</h1>
+                <p class="app-subtitle">Discover your perfect daily practices</p>
+            </div>
+        </header>
+
+        <!-- Main Navigation -->
+        <nav class="main-nav">
+            <button class="nav-btn active" data-section="planner">
+                <span class="nav-icon">🎯</span>
+            </button>
+            <button class="nav-btn" data-section="history">
+                <span class="nav-icon">📚</span>
+            </button>
+            <button class="nav-btn" data-section="notes">
+                <span class="nav-icon">✨</span>
+            </button>
+            <button class="nav-btn" data-section="goals">
+                <span class="nav-icon">🎯</span>
+            </button>
+            <button class="nav-btn" data-section="favorites">
+                <span class="nav-icon">⭐</span>
+            </button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Planner Section -->
+            <section class="content-section active" id="planner">
+                <!-- Moon Phase Display -->
+                <div class="moon-phase-container">
+                    <div id="moon-phase-display"></div>
+                </div>
+
+                <!-- Theme Selector -->
+                <div class="theme-selector-container">
+                    <label for="theme-selector">🎨 Mystical Theme:</label>
+                    <select id="theme-selector">
+                        <option value="mystical">Mystical Purple</option>
+                        <option value="cosmic">Cosmic Pink</option>
+                        <option value="forest">Forest Green</option>
+                        <option value="ocean">Ocean Blue</option>
+                        <option value="sunset">Sunset Orange</option>
+                    </select>
+                </div>
+
+                <!-- Enhanced Controls -->
+                <div class="planner-controls">
+                    <button class="control-btn" id="random-mood-btn">
+                        <span>🎲</span>
+                        <span>Random Mood</span>
+                    </button>
+                    <button class="control-btn" id="add-favorite-btn">
+                        <span>⭐</span>
+                        <span>Save Favorite</span>
+                    </button>
+                    <label class="blend-toggle">
+                        <input type="checkbox" id="blend-mode">
+                        <span>🌈 Mood Blending</span>
+                    </label>
+                </div>
+
+                <!-- Mood Blend Display -->
+                <div class="mood-blend-container" id="mood-blend-display" style="display: none;"></div>
+
+                <div class="section-header">
+                    <h2>Choose Your Mood</h2>
+                    <p>Select how you're feeling today for personalized recommendations</p>
+                </div>
+
+                <div class="mood-selector">
+                    <div class="mood-card" data-mood="grounded">
+                        <div class="mood-card-inner">
+                            <div class="mood-icon">🌿</div>
+                            <h3>Grounded</h3>
+                            <p>Earth energy & stability</p>
+                        </div>
+                    </div>
+                    <div class="mood-card" data-mood="quick">
+                        <div class="mood-card-inner">
+                            <div class="mood-icon">⚡</div>
+                            <h3>Quick Mode</h3>
+                            <p>Fast & efficient energy</p>
+                        </div>
+                    </div>
+                    <div class="mood-card" data-mood="dreamy">
+                        <div class="mood-card-inner">
+                            <div class="mood-icon">🌙</div>
+                            <h3>Dreamy</h3>
+                            <p>Intuitive & mystical flow</p>
+                        </div>
+                    </div>
+                    <div class="mood-card" data-mood="shadow">
+                        <div class="mood-card-inner">
+                            <div class="mood-icon">🖤</div>
+                            <h3>Shadow</h3>
+                            <p>Deep inner work</p>
+                        </div>
+                    </div>
+                    <div class="mood-card" data-mood="fiery">
+                        <div class="mood-card-inner">
+                            <div class="mood-icon">🔥</div>
+                            <h3>Fiery</h3>
+                            <p>Passionate & powerful</p>
+                        </div>
+                    </div>
+                    <div class="mood-card" data-mood="intense">
+                        <div class="mood-card-inner">
+                            <div class="mood-icon">💫</div>
+                            <h3>Intense</h3>
+                            <p>Deep transformation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialty Categories -->
+                <div class="specialty-categories">
+                    <button class="specialty-btn" data-specialty="fitness">
+                        <span class="specialty-icon">⚡</span>
+                        <span>Fitness</span>
+                    </button>
+                    <button class="specialty-btn" data-specialty="breathwork">
+                        <span class="specialty-icon">💨</span>
+                        <span>Breathwork</span>
+                    </button>
+                    <button class="specialty-btn" data-specialty="rituals">
+                        <span class="specialty-icon">🔮</span>
+                        <span>Rituals</span>
+                    </button>
+                </div>
+
+                <!-- App Results -->
+                <div class="app-results" id="app-results"></div>
+            </section>
+
+            <!-- History Section -->
+            <section class="content-section" id="history">
+                <div class="section-header">
+                    <h2>Your Journey</h2>
+                    <p>Track your past selections and discoveries</p>
+                </div>
+                <div class="history-content" id="history-content">
+                    <div class="empty-state">
+                        <div class="empty-icon">📖</div>
+                        <h3>No history yet</h3>
+                        <p>Start exploring moods to build your journey</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Favorites Section -->
+            <section class="content-section" id="favorites">
+                <div class="section-header">
+                    <h2>⭐ Your Favorites ⭐</h2>
+                    <p>Your saved mystical combinations</p>
+                </div>
+                <div class="favorites-content">
+                    <div class="favorites-list" id="favorites-list">
+                        <div class="empty-state">
+                            <div class="empty-icon">⭐</div>
+                            <h3>No favorites yet</h3>
+                            <p>Save your perfect combinations</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Goals Section -->
+            <section class="content-section" id="goals">
+                <div class="section-header">
+                    <h2>🎯 Spiritual Goals 🎯</h2>
+                    <p>Set and track your mystical intentions</p>
+                </div>
+                <div class="goals-content">
+                    <div class="goal-input-container">
+                        <input 
+                            type="text" 
+                            id="goal-input" 
+                            placeholder="🌟 Set a spiritual intention..."
+                            maxlength="100"
+                        >
+                        <button id="add-goal-btn" class="add-goal-btn">
+                            <span>🎯 Add Goal</span>
+                        </button>
+                    </div>
+                    <div class="goals-list" id="goals-list">
+                        <div class="empty-state">
+                            <div class="empty-icon">🎯</div>
+                            <h3>No goals yet</h3>
+                            <p>Set your spiritual intentions</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Notes Section -->
+            <section class="content-section" id="notes">
+                <div class="section-header">
+                    <h2>✨ Mystical Notes ✨</h2>
+                    <p>Capture your spiritual insights and magical moments</p>
+                </div>
+                <div class="notes-content">
+                    <div class="note-input-container">
+                        <textarea 
+                            id="note-input" 
+                            placeholder="🌙 Share your mystical thoughts...
+
+✨ Press Enter for auto-bullets
+**bold** for power
+*italic* for flow  
+🔮 emojis for energy
+> quotes for wisdom
+Ctrl+Enter to save"
+                            rows="6"
+                        ></textarea>
+                        <button id="add-note-btn" class="add-note-btn">
+                            <span>💫 Add Note</span>
+                        </button>
+                    </div>
+                    <div class="notes-list" id="notes-list">
+                        <div class="empty-state">
+                            <div class="empty-icon">📝</div>
+                            <h3>No mystical notes yet</h3>
+                            <p>Start capturing your spiritual journey</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Mood Selection Modal -->
+        <div class="modal-overlay" id="mood-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Select Your Mood</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-mood-grid">
+                        <button class="modal-mood-btn" data-modal-mood="grounded">
+                            <span class="modal-mood-icon">🌿</span>
+                            <span>Grounded</span>
+                        </button>
+                        <button class="modal-mood-btn" data-modal-mood="quick">
+                            <span class="modal-mood-icon">⚡</span>
+                            <span>Quick Mode</span>
+                        </button>
+                        <button class="modal-mood-btn" data-modal-mood="dreamy">
+                            <span class="modal-mood-icon">🌙</span>
+                            <span>Dreamy</span>
+                        </button>
+                        <button class="modal-mood-btn" data-modal-mood="shadow">
+                            <span class="modal-mood-icon">🖤</span>
+                            <span>Shadow</span>
+                        </button>
+                        <button class="modal-mood-btn" data-modal-mood="fiery">
+                            <span class="modal-mood-icon">🔥</span>
+                            <span>Fiery</span>
+                        </button>
+                        <button class="modal-mood-btn" data-modal-mood="intense">
+                            <span class="modal-mood-icon">💫</span>
+                            <span>Intense</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
