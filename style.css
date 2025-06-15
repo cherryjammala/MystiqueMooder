@@ -10,7 +10,7 @@
     --mystical-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
     --purple-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --cosmic-gradient: linear-gradient(135deg, #c026d3 0%, #a21caf 50%, #86198f 100%);
+    --cosmic-gradient: linear-gradient(135deg, #e879f9 0%, #d946ef 50%, #c026d3 100%);
 
     --bg-primary: #0f0715;
     --bg-secondary: #1a0f2e;
@@ -1168,50 +1168,6 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-gradient);
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    const themeSelector = document.getElementById('theme-selector');
-    const root = document.documentElement;
-
-    themeSelector.addEventListener('change', function() {
-      const selectedTheme = this.value;
-
-      switch (selectedTheme) {
-        case 'default':
-          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
-          root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)');
-          root.style.setProperty('--bg-primary', '#0f0715');
-          root.style.setProperty('--bg-secondary', '#1a0f2e');
-          break;
-        case 'dark':
-          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #2c3e50 0%, #3498db 100%)');
-          root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #34495e 0%, #2c3e50 100%)');
-          root.style.setProperty('--bg-primary', '#212121');
-          root.style.setProperty('--bg-secondary', '#333333');
-          break;
-        case 'mystical':
-          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)');
-          root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #6a85b6 0%, #bac8e0 100%)');
-          root.style.setProperty('--bg-primary', '#0a192f');
-          root.style.setProperty('--bg-secondary', '#172a45');
-          break;
-        case 'purple':
-            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
-            root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #6a1b9a 0%, #e91e63 100%)');
-            root.style.setProperty('--bg-primary', '#1a0027');
-            root.style.setProperty('--bg-secondary', '#28003e');
-            break;
-        case 'cosmic':
-      root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #c026d3 0%, #a21caf 50%, #86198f 100%)');
-      root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #d946ef 0%, #c026d3 100%)');
-      root.style.setProperty('--bg-primary', '#1e0d2e');
-      root.style.setProperty('--bg-secondary', '#2a1142');
-      break;
-      }
-    });
-  });
-
-//The change modifies the 'cosmic' theme's color scheme.
 
   document.addEventListener('DOMContentLoaded', function() {
     const specialtyBtns = document.querySelectorAll('.specialty-btn');
