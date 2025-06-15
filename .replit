@@ -1,7 +1,8 @@
-run = "python3 -m http.server 8000"
+
+run = "static-web-server --port 8000 --root . --log-level info"
 
 [nix]
 channel = "stable-22_11"
 
 [deployment]
-run = ["sh", "-c", "python3 -m http.server 8000"]
+run = ["sh", "-c", "static-web-server --port 8000 --root . --log-level info"]
