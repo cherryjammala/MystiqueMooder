@@ -14,10 +14,12 @@
 
     --bg-primary: #0f0715;
     --bg-secondary: #1a0f2e;
-    --bg-card: rgba(255, 255, 255, 0.05);
+    --bg-card: rgba(255, 255, 255, 0.08);
+    --bg-card-fallback: #1e1333;
     --text-primary: #ffffff;
     --text-secondary: rgba(255, 255, 255, 0.7);
-    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.15);
+    --border-color-fallback: #2a1f3d;
 
     --shadow-light: 0 4px 20px rgba(102, 126, 234, 0.2);
     --shadow-medium: 0 8px 32px rgba(102, 126, 234, 0.3);
@@ -144,15 +146,17 @@ body {
     justify-content: center;
     gap: 8px;
     padding: 12px 16px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 25px;
     color: var(--text-secondary);
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     min-width: 48px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .nav-btn:hover {
@@ -184,12 +188,16 @@ body {
 /* Moon Phase Display */
 .moon-phase-container {
     background: var(--bg-card);
+    background: rgba(255, 255, 255, 0.08);
     border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
     padding: 20px;
     margin-bottom: 20px;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .moon-phase {
@@ -222,14 +230,18 @@ body {
 /* Theme Selector */
 .theme-selector-container {
     background: var(--bg-card);
+    background: rgba(255, 255, 255, 0.08);
     border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 16px;
     padding: 16px;
     margin-bottom: 20px;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 #theme-selector {
@@ -256,14 +268,16 @@ body {
     align-items: center;
     gap: 8px;
     padding: 12px 16px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
     color: var(--text-primary);
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .control-btn:hover {
