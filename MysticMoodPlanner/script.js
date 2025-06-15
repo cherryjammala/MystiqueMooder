@@ -510,22 +510,32 @@ function applyTheme(themeName) {
     case 'cosmic':
       root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%)');
       root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)');
+      root.style.setProperty('--bg-primary', '#2d1b42');
+      root.style.setProperty('--bg-secondary', '#3a2454');
       break;
     case 'forest':
       root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #134e5e 0%, #71b280 100%)');
       root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #2d5016 0%, #a8e6cf 100%)');
+      root.style.setProperty('--bg-primary', '#0d2818');
+      root.style.setProperty('--bg-secondary', '#1a3e2b');
       break;
     case 'ocean':
-      root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
+      root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #0077be 0%, #4fc3f7 100%)');
       root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)');
+      root.style.setProperty('--bg-primary', '#0a1929');
+      root.style.setProperty('--bg-secondary', '#1e2a3a');
       break;
     case 'sunset':
       root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)');
       root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #ff9a56 0%, #ffad56 100%)');
+      root.style.setProperty('--bg-primary', '#2a1810');
+      root.style.setProperty('--bg-secondary', '#3d2418');
       break;
     default: // Default mystical theme
       root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
       root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)');
+      root.style.setProperty('--bg-primary', '#0f0715');
+      root.style.setProperty('--bg-secondary', '#1a0f2e');
   }
 
   localStorage.setItem('selectedTheme', themeName);
@@ -745,7 +755,9 @@ function initializeEventListeners() {
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const section = btn.dataset.section;
-      switchSection(section);
+      if (section) {
+        switchSection(section);
+      }
     });
   });
 
@@ -897,6 +909,15 @@ function addAnimationStyles() {
         opacity: 0; 
         transform: translateX(-50%) translateY(-20px); 
       }
+    }
+
+    .clickable-moon {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .clickable-moon:hover {
+      transform: scale(1.05);
     }
   `;
   document.head.appendChild(style);
