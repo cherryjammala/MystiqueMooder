@@ -502,20 +502,20 @@ function handleMoonPhaseClick() {
   const moonPhase = getCurrentMoonPhase();
   if (moonPhase.name === "New Moon") {
     showNotification('🌑 New Moon: Perfect time for new beginnings!');
-    
+
     // Select one random moon-related app
     const randomMoonApp = MOON_RELATED_APPS[Math.floor(Math.random() * MOON_RELATED_APPS.length)];
     currentApps = [randomMoonApp];
-    
+
     renderApps([randomMoonApp], "🌑 New Moon Guidance");
-    
+
     // Add to history with New Moon as the mood
     const newMoonMood = {
       id: 'new-moon',
       label: 'New Moon',
       icon: '🌑'
     };
-    
+
     addToHistory(newMoonMood, [randomMoonApp]);
   } else {
     showNotification(`${moonPhase.icon} ${moonPhase.name}: ${moonPhase.energy}`);
@@ -534,10 +534,10 @@ function applyTheme(themeName) {
       root.style.setProperty('--bg-secondary', '#331426');
       break;
     case 'forest':
-      root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #134e5e 0%, #71b280 100%)');
-      root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #2d5016 0%, #a8e6cf 100%)');
-      root.style.setProperty('--bg-primary', '#0d2818');
-      root.style.setProperty('--bg-secondary', '#1a3e2b');
+      root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #6b8e23 100%)');
+      root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #556b2f 0%, #6b8e23 50%, #9acd32 100%)');
+      root.style.setProperty('--bg-primary', '#1a2f1d');
+      root.style.setProperty('--bg-secondary', '#2d4a32');
       break;
     case 'ocean':
       root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #0077be 0%, #4fc3f7 100%)');
@@ -712,7 +712,7 @@ function showNotification(message) {
     z-index: 2000;
     animation: slideInDown 0.3s ease-out;
     box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
-  `;
+    `;
 
   document.body.appendChild(notification);
 

@@ -11,6 +11,7 @@
     --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
     --purple-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --cosmic-gradient: linear-gradient(135deg, #b83d89 0%, #a33677 50%, #8e2b65 100%);
+    --forest-gradient: linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #6b8e23 100%);
 
     --bg-primary: #0f0715;
     --bg-secondary: #1a0f2e;
