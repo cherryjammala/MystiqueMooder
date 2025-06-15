@@ -1,5 +1,5 @@
 run = "static-web-server --config static-web-server.toml"
-modules = ["python-3.11"]
+modules = ["nodejs-20", "python-3.11"]
 
 [[ports]]
 localPort = 3000
