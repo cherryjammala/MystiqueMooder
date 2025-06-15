@@ -2,6 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 :root {
@@ -14,7 +20,8 @@
 
     --bg-primary: #0f0715;
     --bg-secondary: #1a0f2e;
-    --bg-card: rgba(255, 255, 255, 0.05);
+    --bg-card: rgba(255, 255, 255, 0.04);
+    --bg-card-forest: rgba(74, 124, 89, 0.08);
     --text-primary: #ffffff;
     --text-secondary: rgba(255, 255, 255, 0.7);
     --border-color: rgba(255, 255, 255, 0.1);
@@ -31,6 +38,9 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
+    touch-action: manipulation;
 }
 
 .app-container {
@@ -396,6 +406,8 @@ body {
     backdrop-filter: blur(10px);
     overflow: hidden;
     position: relative;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .mood-card::before {
@@ -1061,24 +1073,37 @@ body {
     }
 }
 
-/* Responsive Design */@media (max-width: 480px) {
+/* Forest Theme Card Enhancement */
+.mood-card:hover,
+.app-card:hover,
+.nav-btn:hover,
+.specialty-btn:hover,
+.control-btn:hover {
+    background: var(--bg-card-forest, var(--bg-card));
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 480px) {
     .app-title {
         font-size: 2rem;
     }
 
     .mood-selector {
         grid-template-columns: 1fr;
+        gap: 12px;
     }
 
     .main-nav {
         flex-wrap: wrap;
         gap: 8px;
+        padding: 0 16px 30px;
     }
 
     .nav-btn {
-        padding: 10px 12px;
+        padding: 12px 14px;
         flex: 1;
         min-width: 0;
+        min-height: 44px;
     }
 
     .nav-text {
@@ -1090,7 +1115,8 @@ body {
     }
 
     .specialty-btn {
-        padding: 12px 16px;
+        padding: 14px 18px;
+        min-height: 44px;
     }
 
     .planner-controls {
@@ -1101,6 +1127,7 @@ body {
     .control-btn {
         width: 100%;
         justify-content: center;
+        min-height: 44px;
     }
 
     .theme-selector-container {
@@ -1120,6 +1147,45 @@ body {
     .blend-mood {
         font-size: 0.8rem;
         padding: 4px 8px;
+    }
+
+    .mood-card-inner {
+        padding: 20px 16px;
+    }
+
+    .mood-icon {
+        font-size: 2.2rem;
+    }
+
+    .app-card {
+        padding: 16px;
+    }
+
+    .main-content {
+        padding: 0 16px 40px;
+    }
+
+    .header {
+        padding: 50px 16px 30px;
+    }
+}
+
+/* Optimize for very small screens */
+@media (max-width: 360px) {
+    .app-title {
+        font-size: 1.8rem;
+    }
+    
+    .nav-btn {
+        padding: 10px 12px;
+    }
+    
+    .mood-card-inner {
+        padding: 16px 12px;
+    }
+    
+    .mood-icon {
+        font-size: 2rem;
     }
 }
 

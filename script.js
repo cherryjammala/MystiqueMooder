@@ -534,10 +534,10 @@ function applyTheme(themeName) {
       root.style.setProperty('--bg-secondary', '#331426');
       break;
     case 'forest':
-      root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #134e5e 0%, #71b280 100%)');
-      root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #2d5016 0%, #a8e6cf 100%)');
-      root.style.setProperty('--bg-primary', '#0d2818');
-      root.style.setProperty('--bg-secondary', '#1a3e2b');
+      root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #1e3a2e 0%, #2d5a3d 50%, #4a7c59 100%)');
+      root.style.setProperty('--secondary-gradient', 'linear-gradient(135deg, #2d5a3d 0%, #4a7c59 50%, #6b8e5a 100%)');
+      root.style.setProperty('--bg-primary', '#0f1f14');
+      root.style.setProperty('--bg-secondary', '#1a2f20');
       break;
     case 'ocean':
       root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #0077be 0%, #4fc3f7 100%)');
