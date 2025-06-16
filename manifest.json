@@ -1,6 +1,6 @@
 {
   "name": "Mystic Mood Planner",
-  "short_name": "Mystique",
+  "short_name": "Mystic",
   "description": "A mystical mood tracking app",
   "start_url": "/",
   "display": "standalone",
