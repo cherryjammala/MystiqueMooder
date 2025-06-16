@@ -1168,28 +1168,6 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-gradient);
 }
-
-/* ======= BLUR FIXES ======= */
-/* Prevent Chrome rendering artifacts */
-body, html {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-}
-
-/* Optimize rendering quality */
-* {
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    image-rendering: -webkit-optimize-contrast;
-}
-
-/* Disable backdrop filters causing blur */
-@supports (-webkit-backdrop-filter: none) {
-    body {
-        -webkit-backdrop-filter: none !important;
-    }
-}
  
 document.addEventListener('DOMContentLoaded', function() {
     const specialtyBtns = document.querySelectorAll('.specialty-btn');
